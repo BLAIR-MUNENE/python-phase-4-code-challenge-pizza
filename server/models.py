@@ -69,11 +69,11 @@ class RestaurantPizza(db.Model, SerializerMixin):
 
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizzas.id'), nullable=False)
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
-    # add relationships
+
     pizza = db.relationship("Pizza", back_populates = "restaurant_pizzas")
     restaurant = db.relationship("Restaurant", back_populates = "restaurant_pizzas")
 
-    # add serialization rules
+
     serialize_rules = ("-restaurant.restaurant_pizzas", "-pizza.restaurant_pizzas")
     
     # add validation
